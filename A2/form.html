@@ -1,0 +1,219 @@
+<html>
+    <head> 
+        
+        <style>
+
+            input{
+                padding :10px;
+                margin-top:20px;
+            }
+            select{
+                padding:10px;
+            }
+            form{
+                border:3px solid green;
+                width:50%;
+                padding:20px;
+                display:block;
+                margin:auto;
+                margin-top:50px;
+            }
+            input[type=submit]{
+                color:white;
+                background-color:orange;
+                padding:20px;
+            }
+        </style>
+        <script type="text/javascript" >
+        
+            function valEmail()
+            {
+                
+                var emailID = document.myform.email.value;
+                atpos = emailID.indexOf("@");
+                dotpos = emailID.lastIndexOf(".");
+                
+                if (atpos < 1 || ( dotpos - atpos < 2 )) 
+                {
+                    alert("Please enter correct email ID");
+                    document.myform.email.focus() ;
+                    return false;
+                }
+                return( true );
+            }
+
+            function valPhone()
+            {   
+
+               
+                var phone = document.myform.phone.value;
+                if(phone.length!=10)
+                {
+                    alert("Enter Correct Phone");
+                    return false;
+                }
+                return true;
+            }
+
+            function valZip()
+            {
+
+                var zip = document.myform.zip.value;
+                
+                if(zip.length!=6)
+                {
+                    alert("Enter Correct Zip Code");
+                    return false;
+                }
+
+                // return true;
+            }
+
+            function Validate() {
+                
+                if(document.myform.fname.value=="")
+                {
+                    alert("Enter Your First Name");
+                    document.myform.fname.focus();
+                    return false;
+                }
+                if(document.myform.participant.value=="-1")
+                {
+                    alert("Enter Correct Details");
+                    document.myform.participant.focus();
+                    return false;
+                }
+
+                if(document.myform.lname.value=="")
+                {
+                    alert("Enter Your Last Name");
+                    document.myform.lname.focus();
+                    return false;
+                }
+               
+                if(document.myform.line1.value=="")
+                {
+                    alert("Enter Your Address");
+                    document.myform.line1.focus();
+                    return false;
+                }
+                if(document.myform.city.value=="")
+                {
+                    alert("Enter Your City");
+                    document.myform.city.focus();
+                    return false;
+                }if(document.myform.state.value=="")
+                {
+                    alert("Enter Your State");
+                    document.myform.state.focus();
+                    return false;
+                }
+                if(document.myform.code.value=="")
+                {
+                    alert("Enter Your Zip Code");
+                    document.myform.code.focus();
+                    return false;
+                }
+                if(document.myform.country.value=="")
+                {
+                    alert("Enter Your Country");
+                    document.myform.country.focus();
+                    return false;
+                }
+                if(document.myform.email.value=="")
+                {
+                    alert("Enter Your Email");
+                    document.myform.email.focus();
+                    return false;
+                }
+                if(document.myform.phone.value=="")
+                {
+                    alert("Enter Your Phone Number");
+                    document.myform.phone.focus();
+                    return false;
+                }
+                
+                
+                if(document.myform.tsize.value=="-1")
+                {
+                    alert("Enter Your Shirt Size");
+                    document.myform.tsize.focus();
+                    return false;
+                }
+                
+                if(valEmail()==false)
+                {
+                    return false;
+                }
+                else if(valPhone()==false)
+                {
+                    return false;
+                }
+                else if(valZip()==false)
+                {
+                    return false;
+                }
+                // if(valEmail()==true && valPhone()==true && valZip()==true)
+                // {
+                //     return true;
+                // }
+                // else
+                // {
+                //     return false;   
+                // }
+                
+            }
+        </script>
+    </head>
+    <body>
+
+        <form action="payment.html" method="post" onsubmit="return Validate();" name="myform">
+                Full Name * <br><input type="text" name="fname" placeholder="First Name" id="fname"/><input type="text" name="lname" placeholder="Last Name" id="lname" />
+
+                <br><br>
+                Participant * <br><select name="participant" >
+                    <option value="-1" selected>Who You Are?</option>
+                    <option value="Student">Student</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Professional">Professional</option>
+                    <option value="Company Representative">Company Representative</option>
+                </select>
+        
+                <br><br>
+        
+                Address * <br><input type="text" name="line1" placeholder="street address line 1"  size="40"/><br>
+                <input type="text" name="line2" placeholder="street address line 2" size="40"/><br>
+                <input type="text" name="city" placeholder="city"/> <input type="text" name="state" placeholder="state/proviance"/><br>
+                
+                <input type="text" name="code" placeholder="postal/zip code" id="zip"/> 
+                <br><br>
+                Country * <br><select name="country">
+                    <option value="-1">Select Your Country</option>
+                    <option value="India">India</option>
+                    <option value="America">America</option>
+        
+                    </select>
+                
+                <br><br>
+        
+                E-mail * <br><input type="text" name="email" placeholder="email" id="mail" size="40"/>
+        
+                <br><br>
+        
+                Phone Number <br><input type="text" name="phone" id="phone" maxlength="10" placeholder="phone number">
+        <br><br>
+        
+                What's your T-shirt size * <br><select name="tsize">
+                    <option value="-1">Select your Size</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+                <br><br>
+                <input type="submit" style="margin:0 auto;" value="Proceed To Payment"/>
+        </form>
+
+    </body>
+</html>

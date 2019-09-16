@@ -1,0 +1,19 @@
+	
+	fieldset {
+		width: 25%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
+		text-align: center;
+	}
+	
+	table {
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px;
+		text-align: left;	
+	}
+	
+	td {
+		padding: 10px;
+	}

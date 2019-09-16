@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Customer Details</title>
+</head>
+<body>
+	<form action="getBill.jsp" method="GET">
+		<fieldset>
+			<legend>Customer Details</legend>
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="cust_name"></td>
+				</tr>
+				<tr>
+					<td>Phone:</td>
+					<td><input type="number" name="cust_phone"></td>
+				</tr>
+				<tr>
+					<td>Address:</td>
+					<td><textarea rows="3" name="cust_addr"></textarea></td>
+				</tr>
+			</table>
+		</fieldset>
+		<br>
+		<table title="Menu">
+			<tr>
+				<th>Item</th>
+				<th>Price</th>
+			</tr>
+			<tr>
+				<td>Pizza</td>
+				<td>300</td>
+			</tr>
+			<tr>
+				<td>Burger</td>
+				<td>80</td>
+			</tr>
+			<tr>
+				<td>Dosa</td>
+				<td>90</td>
+			</tr>
+			<tr>
+				<td>Paratha</td>
+				<td>75</td>
+			</tr>
+		</table>
+		<br>
+		<fieldset>
+			<legend>Order</legend>
+			<p>Select items for delivery</p>
+			<input type="checkbox" name="food_item" value="Pizza">Pizza
+			<br>
+			<input type="checkbox" name="food_item" value="Burger">Burger
+			<br>
+			<input type="checkbox" name="food_item" value="Dosa">Dosa
+			<br>
+			<input type="checkbox" name="food_item" value="Paratha">Paratha
+			<br>
+		</fieldset>
+		<table>
+			<tr>
+				<td><input type="reset" value="Reset"></td>
+				<td><input type="submit" value="Place Order"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

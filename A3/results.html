@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <style>
+            table,th,td{
+                border:3px solid green;
+                margin:auto;
+                border-collapse:collapse;
+                padding:20px;
+            }
+        </style>
+    </head>
+
+    <body>
+            <script>
+
+                function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+                function getGrade(num)
+                {
+                    if(num>75)
+                    {
+                        return "A";
+                    }
+                    else if(num<75 && num>60)
+                    {
+                        return "B";
+                    }
+                    else if(num<60 && num>45)
+                    {
+                        return "C";
+                    }
+                    else if(num<45)
+                    {
+                        return "FAILED";
+                    }
+                }
+                var arr = [];
+                var json_str = getCookie("rollNo");
+                // alert(json_str);
+                // var newArr = JSON.parse(json_str);
+                var newArr = json_str.split('|');
+                // alert(newArr.split(','));
+
+                document.write("<table>");
+                document.write("<tr><th>First Name</th><th>Roll No</th><th>SUB1</th><th>SUB2</th><th>SUB3</th><th>SUB4</th><th>SUB5</th><th>Total</th><th>Average</th><th>Grade</th></tr>");
+                
+                
+                for(i=0;i<newArr.length;i++)
+                {
+                    var details = getCookie(newArr[i]).split('|');
+                    // alert(details[1]);
+                    //     // 
+                    // alert((details[2]));
+                    var sum=parseInt(details[2])+parseInt(details[3])+parseInt(details[4])+parseInt(details[5])+parseInt(details[6]);
+
+                    var Average = sum/5;
+                    var Grade = getGrade(parseInt(Average));
+                    // alert(sum);
+                    document.write("<tr>"); 
+                    var data = "<td>"+details[1]+"</td>"+"<td>"+details[0]+"</td>"+"<td>"+details[2]+"</td>"+"<td>"+details[3]+"</td>"+"<td>"+details[4]+"</td>"
+                    +"<td>"+details[5]+"</td>"+"<td>"+details[6]+"</td>"+"<td>"+sum+"</td>"+"<td>"+Average+"</td>"+"<td>"+Grade+"</td>";
+                    document.write(data);
+                    document.write("</tr>");
+                }
+                document.write("</table>");
+            </script>
+        
+    </body>
+</html>

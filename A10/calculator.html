@@ -1,0 +1,34 @@
+<html>
+
+<head>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript">
+	
+		var app = angular.module("calc",[]);
+		app.controller("calcCtrl", function($scope) {
+			$scope.add = function() {
+				var a = Number($scope.num1);
+				var b = Number($scope.num2);
+				$scope.result = a+b;
+			}
+		})
+	
+	</script>
+
+	<style>
+	
+	</style>
+</head>
+
+<body ng-app="calc" ng_controller="calcCtrl">
+
+	<input type="number" ng-model="num1" placeholder="Number 1">
+	<input type="number" ng-model="num2" placeholder="Number 2">
+	
+	<input type="number" ng-model="result" placeholder="Result" readonly>
+	
+	<button ng-click="add()" value="Add">Add</button>
+	
+</body>
+
+</html>

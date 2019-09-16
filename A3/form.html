@@ -1,0 +1,158 @@
+<html>
+    <head>
+
+        <script>
+
+
+
+            function setCookie(cname,cvalue,exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function Store() {
+                // var user=getCookie("username");
+                // if (user != "") {
+                //     alert("Welcome again " + user);
+                // } else {
+                //    user = prompt("Please enter your name:","");
+                //    if (user != "" && user != null) {
+                //        
+                //    }
+                // }
+                var array=[];
+                var rollArray=[];
+                var rollNo = document.getElementById('roll').value;
+                var name = document.getElementById('name').value;
+                
+                array.push(name);
+                array.push(rollNo);
+                rollArray.push(rollNo);
+                 if (getCookie("rollNo")=="")
+                {
+                    var str = rollArray.join('|');
+                    // var json_str = JSON.stringify(rollArray);
+                    setCookie("rollNo",str, 30);
+                }
+                else
+                {
+                    var json_str = getCookie("rollNo");
+                    var arr = json_str.split('|');
+                    arr.push(rollNo);
+                    var str = arr.join('|');
+                    // var json_str = JSON.stringify(rollArray);
+                    setCookie("rollNo",str, 30)
+                }
+                array.push(document.getElementById('sub1').value);
+                array.push(document.getElementById('sub2').value);
+                array.push(document.getElementById('sub3').value);
+                array.push(document.getElementById('sub4').value);
+                array.push(document.getElementById('sub5').value);
+
+
+                var json_str = array.join('|');
+                // alert(json_str);
+                setCookie(rollNo,json_str, 30);
+
+                // var str = getCookie("rollNo");
+                // var arr = JSON.parse(json_str);
+
+                // alert(json_str);
+
+            }
+
+
+            
+        </script>
+
+        <style>
+            input{
+                padding:10px;
+                display:inline-block;
+
+            }
+            .formDiv{
+                border:3px solid green;  
+                margin:auto;
+                width:40%;
+                margin-top:50px;
+                padding:20px;
+            }
+            input[type=submit]
+            {
+                margin:auto;
+                display: block;
+                background-color:green;
+                color:white;
+                border:3px solid white;
+                padding:20px;
+                width:150px;
+                border-radius:4px;
+            }
+            label{
+                display:inline-block;
+                clear:left;
+                width:25%;
+            }
+
+            .marks input{
+                margin-bottom:20px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="formDiv">
+                <form action="" onsubmit="Store()" method="post">
+                        <div>
+                            <label>Name:</label> <input type="text" id="name" name="name" placeholder="Enter Your Name"/>
+                        <br>
+                        <br>
+                        <label>Roll No:</label> <input type="text" id="roll" name="roll" placeholder="Enter Your Roll Number"/>
+                        <br>
+                        <br>
+                        <label>Class:</label> <input type="text" name="clas" placeholder="Enter Your Class"/>
+                        <br>
+                        <br>
+            
+                        <label>Enter Your Marks:</label> 
+                        <br>
+            
+                        <div class="marks">
+                                <label>DAA:</label> <input type="text" name="sub1" id="sub1" placeholder="DAA"/><br>
+                                <label>ESIOT:</label><input type="text" name="sub2" id="sub2" placeholder="ESIOT"/><br>
+                                <label>SPOS:</label><input type="text" name="sub3" id="sub3" placeholder="SPOS"/><br>
+                                <label>WT:</label><input type="text" name="sub4" id="sub4" placeholder="WT"/><br>
+                                <label>SMD:</label><input type="text" name="sub5" id="sub5" placeholder="SMD"/><br><br>
+                            </div>
+                        </div>
+                        
+                        <input type="submit" value="Submit"/>
+                    </form>
+                    
+                    <form action="results.html">
+                            <input type="submit" value="Show Results"/>
+                    </form>
+        </div>
+
+    </body>
+</html> 

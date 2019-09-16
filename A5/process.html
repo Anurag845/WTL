@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <style>
+            table,th,td{
+                border:3px solid green;
+                border-collapse:collapse;
+                padding:20px;
+                margin:auto;
+            }
+        </style>
+    </head>
+<body>
+
+
+
+<button type="button" onclick="loadXMLDoc()">Show Data</button>
+
+<button type="button" onclick="showResults()">Show Results</button>
+
+    <p id="demo"></p>
+  <script>
+  function loadXMLDoc() {
+    var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myFunction(this);
+      }
+    };
+    xmlhttp.open("GET", "employee.xml", true);
+    xmlhttp.send();
+  }
+
+    
+    function showResults() {
+    var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        results(this);
+      }
+    };
+    xmlhttp.open("GET", "employee.xml", true);
+    xmlhttp.send();
+  }
+  
+  function myFunction(xml) {
+    var x,y,z,w, i, xmlDoc, txt;
+    xmlDoc = xml.responseXML;
+    txt = "";
+    x = xmlDoc.getElementsByTagName("name");
+    y = xmlDoc.getElementsByTagName("id");
+    z = xmlDoc.getElementsByTagName("department");
+    w = xmlDoc.getElementsByTagName("salary");
+    
+    
+    for (i = 0; i< x.length; i++) {
+      txt += "<tr><td>"+x[i].childNodes[0].nodeValue+"<td>"+y[i].childNodes[0].nodeValue+"<td>"+z[i].childNodes[0].nodeValue+"<td>"+w[i].childNodes[0].nodeValue+"</tr>";
+      
+    }
+//    var n = "<tr>"+txt+"</tr>";
+    var result = "<table><tr><th>Name</th><th>Id</th><th>Dept</th><th>Salary</th></tr>";
+    
+    document.getElementById("demo").innerHTML = result+txt+"</table>";
+  }
+  
+  function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+  }
+
+  function results(xml) {
+    var x,y,z,w, i, xmlDoc, txt;
+    xmlDoc = xml.responseXML;
+    
+    x = xmlDoc.getElementsByTagName("department");
+    y = xmlDoc.getElementsByTagName("salary");
+    
+    var dept={};
+    var count={};
+    var avg={};
+    
+    for(i=0;i<x.length;i++)
+    {
+        if(dept[(x[i].childNodes[0].nodeValue)]==undefined){
+            dept[(x[i].childNodes[0].nodeValue)] = 0;
+        }
+        
+        if(count[(x[i].childNodes[0].nodeValue)]==undefined){
+            count[(x[i].childNodes[0].nodeValue)] = 0;
+        }
+        dept[(x[i].childNodes[0].nodeValue)]+= parseInt(y[i].childNodes[0].nodeValue);
+        count[(x[i].childNodes[0].nodeValue)]+=1;
+        avg[(x[i].childNodes[0].nodeValue)] = dept[(x[i].childNodes[0].nodeValue)]/count[(x[i].childNodes[0].nodeValue)];
+        
+    }
+    
+//    alert(avg['']);
+
+        
+
+    var txt = "<table><tr><td>DEPT</td><td>AVG SALARY</td></tr>";
+    
+    for(key in avg){
+            txt+="<tr><td>"+key+"</td><td>"+avg[key]+"</td></tr>";
+        }
+//    for()
+    
+    document.getElementById("demo").innerHTML = txt+"</table>";
+    
+  }
+  </script>
+
+</body>
+</html>

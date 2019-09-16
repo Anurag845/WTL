@@ -1,0 +1,26 @@
+<html>
+
+	<head>
+	
+		<script type="text/javascript" src="angular.min.js"></script>
+		
+		<script type="text/javascript">
+		
+			var app = angular.module("converter",[]);
+			app.controller("converterCtrl", function($scope) {
+				$scope.rupee = 0;
+				$scope.dollar = 0;
+			});
+		
+		</script>
+	
+	</head>
+	
+	<body ng-app = "converter" ng-controller = "converterCtrl">
+	
+		<input type="number" ng-model="rupee" placeholder="Rupees" ng-keyup="dollar=rupee/69">
+		<input type="number" ng-model="dollar" placeholder="Dollars" ng-keyup="rupee=dollar*69">
+	
+	</body>
+
+</html>

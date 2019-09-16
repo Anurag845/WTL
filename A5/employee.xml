@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<employees>
+<employee>
+	<id>EMP1</id>
+	<name>Dhananjay Patwardhan</name>
+	<department>Accounts</department>
+	<salary>400000</salary>
+</employee>
+
+<employee>
+	<id>EMP2</id>
+	<name>Manish Joglekar</name>
+	<department>Manufacturing</department>
+	<salary>800000</salary>
+</employee>
+
+<employee>
+	<id>EMP3</id>
+	<name>Bipin Shah</name>
+	<department>Design Testing</department>
+	<salary>900000</salary>
+</employee>
+
+<employee>
+	<id>EMP4</id>
+	<name>Anurag Gujarathi</name>
+	<department>Data Scientist</department>
+	<salary>1800000</salary>
+</employee>
+</employees>
